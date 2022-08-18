@@ -10,12 +10,12 @@ class AuthController {
       const userData = await authService.registration(
         email,
         password,
-        username
+        username,
       );
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
         httpsOnly: true,
+        httpOnly: true,
       });
       delete userData.refreshToken;
       return res.json(userData);
@@ -41,6 +41,7 @@ class AuthController {
       const userData = await authService.login(email, password);
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpsOnly: true,
         httpOnly: true,
       });
       delete userData.refreshToken;
@@ -69,6 +70,7 @@ class AuthController {
       const userData = await authService.refresh(refreshToken);
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpsOnly: true,
         httpOnly: true,
       });
       return res.json(userData);
