@@ -188,7 +188,7 @@ io.on('connection', (socket) => {
   socket.on('playerJoined', (msg) => {
     // // console.log('playerJoined', msg.roomID);
     msg.user.socket = socket.id;
-    io.to(msg.roomID).emit('playerJoined', msg.user);
+    io.to(msg.roomID).timeout(5000).emit('playerJoined', msg.user);
   });
   socket.on('sendNewGameState', (msg) => {
     setTimeout(() => {
