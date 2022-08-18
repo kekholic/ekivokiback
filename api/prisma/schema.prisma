@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int         @id @default(autoincrement())
+  email          String      @unique
+  username       String      @unique
+  password       String
+  role           String      @default("user")
+  won            Int         @default(0)
+  lost           Int         @default(0)
+  appruvedMail   Boolean     @default(false)
+  codeActivation String?     @unique
+  UserNGame      UserNGame[]
+  Token          Token?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model Token {
+  id           Int      @id @default(autoincrement())
+  refreshToken String   @unique
+  User         User     @relation(fields: [userId], onDelete: Cascade, references: [id])
+  userId       Int      @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Game {
+  id              Int               @id @default(autoincrement())
+  title           String
+  password        String?
+  countPlayers    Int               @default(0)
+  maxPlayers      Int
+  status          String            @default("created")
+  UserNGame       UserNGame[]
+  GameNCollection GameNCollection[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+}
+
+model UserNGame {
+  id        Int      @id @default(autoincrement())
+  User      User     @relation(fields: [userId], onDelete: Cascade, references: [id])
+  userId    Int
+  Game      Game     @relation(fields: [gameId], onDelete: Cascade, references: [id])
+  gameId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Collection {
+  id              Int               @id @default(autoincrement())
+  title           String
+  Card            Card[]
+  GameNCollection GameNCollection[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+}
+
+model Card {
+  id                 Int        @id @default(autoincrement())
+  Collection         Collection @relation(fields: [collectionId], references: [id])
+  collectionId       Int
+  questionForPlayers String
+  questionForHost    String
+  type               Int
+  theme              String?
+  task               String
+  word               String
+  exceptions         String?
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+}
+
+model GameNCollection {
+  id           Int        @id @default(autoincrement())
+  Game         Game       @relation(fields: [gameId], onDelete: Cascade, references: [id])
+  gameId       Int
+  Collection   Collection @relation(fields: [collectionId], onDelete: Cascade, references: [id])
+  collectionId Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}

@@ -1,0 +1,9 @@
+PORT=4000
+DATABASE_URL="postgresql://admindb:admindb@localhost:5432/ekivoki?schema=public"
+JWT_ACCESS_SECRET=jwt-access-secret-key
+JWT_REFRESH_SECRET=jwt-refresh-secret-key
+SMTP_HOST="smtp.gmail.com"
+SMTP_PORT=587
+SMTP_USER=testNekrasovdv91@gmail.com
+SMTP_PASSWORD="skmkkhpcozaagfqv"
+CLIENT_URL="http://localhost:3000"
