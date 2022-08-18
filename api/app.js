@@ -11,7 +11,7 @@ const cors = require('cors');
 
 const app = express(); // создание версии сервера express'a
 
-const server = require('https').createServer(app);
+const server = require('http').createServer(app);
 
 const io = require('socket.io')(server, {
   cors: {
