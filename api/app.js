@@ -15,7 +15,7 @@ const server = require('http').createServer(app);
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: '*',
+    origin: process.env.CLIENT_URL,
   },
 });
 
@@ -25,7 +25,7 @@ const errorMiddleware = require('./src/middlewares/error-middleware');
 const { PORT } = process.env; // получение переменных env
 
 const corsOptions = {
-  origin: '*',
+  origin: process.env.CLIENT_URL,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true,
 };
