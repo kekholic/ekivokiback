@@ -15,7 +15,7 @@ const server = require('http').createServer(app);
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://ekivokifront.vercel.app/',
+    origin: 'https://ekivokifront.vercel.app',
     credentials: true,
   },
 });
@@ -26,7 +26,7 @@ const errorMiddleware = require('./src/middlewares/error-middleware');
 const { PORT } = process.env; // получение переменных env
 
 const corsOptions = {
-  origin: [process.env.CLIENT_URL],
+  origin: ['https://ekivokifront.vercel.app'],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true,
 };
