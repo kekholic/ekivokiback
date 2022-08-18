@@ -11,11 +11,11 @@ const cors = require('cors');
 
 const app = express(); // создание версии сервера express'a
 
-const server = require('http').createServer(app);
+const server = require('https').createServer(app);
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: '*',
   },
 });
 
@@ -25,7 +25,7 @@ const errorMiddleware = require('./src/middlewares/error-middleware');
 const { PORT } = process.env; // получение переменных env
 
 const corsOptions = {
-  origin: ['http://localhost:3000'],
+  origin: '*',
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true,
 };
