@@ -17,7 +17,7 @@ class AuthController {
         httpOnly: true,
         secure: true,
         sameSite: 'none',
-        domain: 'https://ekivokifront.vercel.app',
+        domain: 'ekivokifront.vercel.app',
       });
       delete userData.refreshToken;
       return res.json(userData);
@@ -46,7 +46,7 @@ class AuthController {
         httpOnly: true,
         secure: true,
         sameSite: 'none',
-        domain: 'https://ekivokifront.vercel.app',
+        domain: 'ekivokifront.vercel.app',
       });
       delete userData.refreshToken;
 
