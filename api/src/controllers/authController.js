@@ -80,7 +80,8 @@ class AuthController {
       });
       return res.json(userData);
     } catch (error) {
-      next(error);
+      res.status(500).json(error);
+      // next(error);
     }
   }
 }
