@@ -68,21 +68,21 @@ class AuthController {
   }
 
   async refresh(req, res, next) {
-    try {
-      const { refreshToken } = req.cookies;
-      const userData = await authService.refresh(refreshToken);
-      res.cookie('refreshToken', userData.refreshToken, {
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-        secure: true,
-        domain: req.hostname,
+    // try {
+    //   const { refreshToken } = req.cookies;
+    //   const userData = await authService.refresh(refreshToken);
+    //   res.cookie('refreshToken', userData.refreshToken, {
+    //     maxAge: 30 * 24 * 60 * 60 * 1000,
+    //     httpOnly: true,
+    //     secure: true,
+    //     domain: req.hostname,
 
-      });
-      return res.json(userData);
-    } catch (error) {
-      res.status(500).json(error);
-      // next(error);
-    }
+    //   });
+    //   return res.json(userData);
+    // } catch (error) {
+    res.status(500).json(req.cookies);
+    // next(error);
+    // }
   }
 }
 
