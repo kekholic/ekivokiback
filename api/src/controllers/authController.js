@@ -15,6 +15,7 @@ class AuthController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: true,
 
       });
       delete userData.refreshToken;
@@ -42,6 +43,7 @@ class AuthController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: true,
       });
       delete userData.refreshToken;
 
@@ -70,6 +72,7 @@ class AuthController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: true,
       });
       return res.json(userData);
     } catch (error) {
