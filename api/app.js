@@ -33,7 +33,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(cookieParser());
+app.use(cookieParser('', {
+  sameSite: 'none',
+  secure: true,
+}));
 
 const authRouter = require('./src/routes/authRouter');
 const gameRouter = require('./src/routes/gameRouter');
