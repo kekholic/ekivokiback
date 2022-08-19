@@ -36,6 +36,7 @@ app.use(cors(corsOptions));
 app.use(cookieParser('', {
   sameSite: 'none',
   secure: true,
+  domain: 'https://ekivokifront.vercel.app',
 }));
 
 const authRouter = require('./src/routes/authRouter');
