@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable class-methods-use-this */
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
@@ -100,24 +101,22 @@ class AuthService {
   }
 
   async refresh(refreshToken) {
-    try {
-      if (!refreshToken) {
-        throw ApiError.UnauthorizedError();
-      }
-      const userData = tokenService.validateRefreshToken(refreshToken);
-      const tokenFromDb = await tokenService.findToken(refreshToken);
-      if (!userData || !tokenFromDb) {
-        throw ApiError.UnauthorizedError();
-      }
-      const user = await prisma.user.findUnique({ where: { id: userData.id } });
-      const userDto = new UserDto(user);
-      const tokens = tokenService.generateTokens({ ...userDto });
-      await tokenService.saveToken(userDto.id, tokens);
-      return { ...tokens, user: userDto };
-    } catch (error) {
-      // // console.log(error);
-      throw ApiError.BadRequest('Ошибка обновления токена');
+    if (!refreshToken) {
+      throw ApiError.UnauthorizedError();
     }
+    const userData = tokenService.validateRefreshToken(refreshToken);
+    const tokenFromDb = await tokenService.findToken(refreshToken);
+    if (!userData || !tokenFromDb) {
+      throw ApiError.UnauthorizedError();
+    }
+    const user = await prisma.user.findUnique({ where: { id: userData.id } });
+    const userDto = new UserDto(user);
+    const tokens = tokenService.generateTokens({ ...userDto });
+    await tokenService.saveToken(userDto.id, tokens);
+    return { ...tokens, user: userDto };
+
+    // // console.log(error);
+    // throw ApiError.BadRequest('Ошибка обновления токена');
   }
 }
 
