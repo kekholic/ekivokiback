@@ -33,11 +33,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(cookieParser('', {
-  sameSite: 'none',
-  secure: true,
-  domain: 'https://ekivokifront.vercel.app',
-}));
+app.use(cookieParser());
 
 const authRouter = require('./src/routes/authRouter');
 const gameRouter = require('./src/routes/gameRouter');
