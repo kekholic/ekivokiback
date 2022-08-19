@@ -26,7 +26,7 @@ const errorMiddleware = require('./src/middlewares/error-middleware');
 const { PORT } = process.env; // получение переменных env
 
 const corsOptions = {
-  origin: ['https://ekivokifront.vercel.app'],
+  // origin: ['https://ekivokifront.vercel.app'],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true,
 };
