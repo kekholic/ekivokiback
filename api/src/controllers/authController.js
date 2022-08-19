@@ -16,7 +16,7 @@ class AuthController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         secure: true,
-
+        sameSite: 'none',
       });
       delete userData.refreshToken;
       return res.json(userData);
@@ -44,6 +44,7 @@ class AuthController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         secure: true,
+        sameSite: 'none',
       });
       delete userData.refreshToken;
 
@@ -73,6 +74,7 @@ class AuthController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         secure: true,
+        sameSite: 'none',
       });
       return res.json(userData);
     } catch (error) {
