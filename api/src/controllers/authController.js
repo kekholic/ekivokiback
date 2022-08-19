@@ -14,7 +14,7 @@ class AuthController {
       );
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        // httpOnly: true,
+        httpOnly: true,
         secure: true,
         sameSite: 'none',
         domain: 'https://ekivokifront.vercel.app',
@@ -43,7 +43,7 @@ class AuthController {
       const userData = await authService.login(email, password);
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        // httpOnly: true,
+        httpOnly: true,
         secure: true,
         sameSite: 'none',
         domain: 'https://ekivokifront.vercel.app',
@@ -74,10 +74,10 @@ class AuthController {
       const userData = await authService.refresh(refreshToken);
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        // httpOnly: true,
+        httpOnly: true,
         secure: true,
         sameSite: 'none',
-        domain: 'https://ekivokifront.vercel.app',
+
       });
       return res.json(userData);
     } catch (error) {
