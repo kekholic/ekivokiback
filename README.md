@@ -1,6 +1,6 @@
 # Ekivokiback
 
-Backpart of online game Ekivoki for 2-4 players!
+Backpart of online game Ekivoki!
 
 # Overview
 
