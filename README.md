@@ -1,3 +1,18 @@
-back part of online game Ekivoki!
+# Ekivokiback
 
-stack: NodeJS, ExpressJS, PostgreSQL, Prisma, socket-io
+Backpart of online game Ekivoki for 2-4 players!
+
+# Overview
+
+This game was build using next technologies:
+
++ NodeJS
++ ExpressJS
++ PrismaORM
++ PostreSQL
++ Socket.io
++ JWT
+
+# Links
+
+Test my project on Vercel! https://ekivokifront.vercel.app/game/start
